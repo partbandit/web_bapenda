@@ -164,20 +164,7 @@
 		background: rgba(255, 255, 255, 0.05);
 	}
 
-	.escape-mobile-menu {
-		display: block;
-		position: absolute;
-		height: 100%;
-		top: 0px;
-		right: 0px;
-		width: 50%;
-		z-index: 1;
-		background: #232323;
-		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-		filter: alpha(opacity=0);
-		opacity: 0;
-		box-shadow: inset 30px 0px 30px -40px #000, inset 1px 0px 0px rgba(255, 255, 255, 0.3);
-	}
+	
 
 	body.menu-active .escape-mobile-menu {
 		z-index: 3;

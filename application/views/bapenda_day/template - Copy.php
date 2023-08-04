@@ -1,34 +1,34 @@
 <!DOCTYPE HTML>
 <html lang = "en">
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  
-  <title><?php echo $title; ?></title>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta charset="UTF-8">
+	
+	<title><?php echo $title; ?></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
     <meta name="author" content="">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="robots" content="index, follow">
-  <meta name="description" content="<?php echo $description; ?>">
-  <meta name="keywords" content="<?php echo $keywords; ?>">
-  <meta name="robots" content="all,index,follow">
-  <meta http-equiv="Content-Language" content="id-ID">
-  <meta NAME="Distribution" CONTENT="Global">
-  <meta NAME="Rating" CONTENT="General">
-  <link rel="canonical" href="<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>"/>
-  <?php if ($this->uri->segment(1)=='berita' AND $this->uri->segment(2)=='detail'){ $rows = $this->model_utama->view_where('berita',array('judul_seo' => $this->uri->segment(3)))->row_array();
-  echo '<meta property="og:title" content="'.$title.'" />
-  <meta property="og:type" content="article" />
-  <meta property="og:url" content="'.base_url().''.$this->uri->segment(3).'" />
-  <meta property="og:image" content="'.base_url().'asset/foto_berita/'.$rows['gambar'].'" />
-  <meta property="og:description" content="'.$description.'"/>';
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="robots" content="index, follow">
+	<meta name="description" content="<?php echo $description; ?>">
+	<meta name="keywords" content="<?php echo $keywords; ?>">
+	<meta name="robots" content="all,index,follow">
+	<meta http-equiv="Content-Language" content="id-ID">
+	<meta NAME="Distribution" CONTENT="Global">
+	<meta NAME="Rating" CONTENT="General">
+	<link rel="canonical" href="<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>"/>
+	<?php if ($this->uri->segment(1)=='berita' AND $this->uri->segment(2)=='detail'){ $rows = $this->model_utama->view_where('berita',array('judul_seo' => $this->uri->segment(3)))->row_array();
+	echo '<meta property="og:title" content="'.$title.'" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="'.base_url().''.$this->uri->segment(3).'" />
+	<meta property="og:image" content="'.base_url().'asset/foto_berita/'.$rows['gambar'].'" />
+	<meta property="og:description" content="'.$description.'"/>';
 } ?>
 <link rel="shortcut icon" href="<?php echo base_url(); ?>asset/images/<?php echo favicon(); ?>" />
 <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="rss.xml" />
@@ -46,15 +46,15 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>template/<?php echo template(); ?>/jscript/jquery-latest.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>template/<?php echo template(); ?>/jscript/theme-scripts.js"></script>
 <?php if ($this->uri->segment(1)=='main' OR $this->uri->segment(1)==''){ ?>
-  <script type="text/javascript" src="<?php echo base_url(); ?>template/<?php echo template(); ?>/slide/js/jssor.slider-23.1.0.mini.js"></script>
-  <script type="text/javascript" src="<?php echo base_url(); ?>template/<?php echo template(); ?>/slide/js/slide.js"></script>
+	<script type="text/javascript" src="<?php echo base_url(); ?>template/<?php echo template(); ?>/slide/js/jssor.slider-23.1.0.mini.js"></script>
+	<script type="text/javascript" src="<?php echo base_url(); ?>template/<?php echo template(); ?>/slide/js/slide.js"></script>
 <?php } ?>
 <script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.0";
-  fjs.parentNode.insertBefore(js, fjs);
+	var js, fjs = d.getElementsByTagName(s)[0];
+	if (d.getElementById(id)) return;
+	js = d.createElement(s); js.id = id;
+	js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.0";
+	fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 </script>
 <style type="text/css">.the-menu a.active{ color:#ea8400 !important; } </style>
@@ -79,103 +79,103 @@
   <div id="preloader"></div>
 
 
-    <?php include "header.php"; ?>
-  
-  
-  <div class="content">
-    
+		<?php include "header.php"; ?>
+	
+	
+	<div class="content">
+		
 
-      <center>
-      <?php
-      if ($this->uri->segment(1)=='main' OR $this->uri->segment(1)==''){
-        $iklanatas = $this->model_utama->view('iklanatas');
-        foreach ($iklanatas->result_array() as $b) {
-        $string = $b['gambar'];
-        if ($b['gambar'] != ''){
-          if(preg_match("/swf\z/i", $string)) {
-            echo "<embed width='100%' src='".base_url()."asset/foto_iklanatas/$b[gambar]' quality='high' type='application/x-shockwave-flash'>";
-          } else {
-            echo "<a href='$b[url]' target='_blank'><img style='margin-bottom:5px' width='100%' src='".base_url()."asset/foto_iklanatas/$b[gambar]' alt='$b[judul]' /></a>";
-          }
-        }
-        if (trim($b['source']) != ''){ echo "$b[source]"; }
-        }
-      }
-      ?>
-      </center>
+			<center>
+			<?php
+			if ($this->uri->segment(1)=='main' OR $this->uri->segment(1)==''){
+			  $iklanatas = $this->model_utama->view('iklanatas');
+			  foreach ($iklanatas->result_array() as $b) {
+				$string = $b['gambar'];
+				if ($b['gambar'] != ''){
+					if(preg_match("/swf\z/i", $string)) {
+						echo "<embed width='100%' src='".base_url()."asset/foto_iklanatas/$b[gambar]' quality='high' type='application/x-shockwave-flash'>";
+					} else {
+						echo "<a href='$b[url]' target='_blank'><img style='margin-bottom:5px' width='100%' src='".base_url()."asset/foto_iklanatas/$b[gambar]' alt='$b[judul]' /></a>";
+					}
+				}
+				if (trim($b['source']) != ''){ echo "$b[source]"; }
+			  }
+			}
+			?>
+			</center>
 
-      <?php 
-      if ($this->uri->segment(1)=='kategori'){
-        $bb = $this->db->query("SELECT * FROM kategori where kategori_seo='".cetak($this->uri->segment(3))."'")->row_array();
-        if ($bb['gambar_utama'] != ''){
-          if(preg_match("/swf\z/i", $string)) {
-            echo "<embed width='100%' src='".base_url()."asset/foto_berita/$bb[gambar_utama]' quality='high' type='application/x-shockwave-flash'>";
-          } else {
-            echo "<a href='#' target='_blank'><img style='margin-bottom:5px' width='100%' src='".base_url()."asset/foto_berita/$bb[gambar_utama]' alt='$bb[nama_kategori]' /></a>";
-          }
-        }
-      }
-      ?>
+			<?php 
+			if ($this->uri->segment(1)=='kategori'){
+				$bb = $this->db->query("SELECT * FROM kategori where kategori_seo='".cetak($this->uri->segment(3))."'")->row_array();
+				if ($bb['gambar_utama'] != ''){
+					if(preg_match("/swf\z/i", $string)) {
+						echo "<embed width='100%' src='".base_url()."asset/foto_berita/$bb[gambar_utama]' quality='high' type='application/x-shockwave-flash'>";
+					} else {
+						echo "<a href='#' target='_blank'><img style='margin-bottom:5px' width='100%' src='".base_url()."asset/foto_berita/$bb[gambar_utama]' alt='$bb[nama_kategori]' /></a>";
+					}
+				}
+			}
+			?>
 
-      <div class="main-content">
-        <?php echo $contents; ?>
-      <div class="clear-float"></div>
-      </div>
-    </div>
-  </div>
+			<div class="main-content">
+				<?php echo $contents; ?>
+			<div class="clear-float"></div>
+			</div>
+		</div>
+	</div>
 
-  <footer>
-    <div class="footer">
-      <?php 
-        include "footer.php";
-        $this->model_utama->kunjungan(); 
-      ?>
-    </div>
-  </footer>
+	<footer>
+		<div class="footer">
+			<?php 
+				include "footer.php";
+				$this->model_utama->kunjungan(); 
+			?>
+		</div>
+	</footer>
 </div>
 
 <!-- Vendor JS Files -->
-  <script src="<?php echo base_url(); ?>assets/vendor/aos/aos.js"></script>
-  <script src="<?php echo base_url(); ?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="<?php echo base_url(); ?>assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="<?php echo base_url(); ?>assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="<?php echo base_url(); ?>assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="<?php echo base_url(); ?>assets/vendor/php-email-form/validate.js"></script>
+	<script src="<?php echo base_url(); ?>assets/vendor/aos/aos.js"></script>
+	<script src="<?php echo base_url(); ?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="<?php echo base_url(); ?>assets/vendor/glightbox/js/glightbox.min.js"></script>
+	<script src="<?php echo base_url(); ?>assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+	<script src="<?php echo base_url(); ?>assets/vendor/swiper/swiper-bundle.min.js"></script>
+	<script src="<?php echo base_url(); ?>assets/vendor/php-email-form/validate.js"></script>
 
-  <!-- Template Main JS File -->
-  <script src="<?php echo base_url(); ?>assets/js/main.js"></script>
+	<!-- Template Main JS File -->
+	<script src="<?php echo base_url(); ?>assets/js/main.js"></script>
 
 
 
-  <!-- Scripts -->
-  <script type='text/javascript'>
-  $(function() { $(window).scroll(function() {
-      if($(this).scrollTop()>400) { $('#Back-to-top').fadeIn(); }else { $('#Back-to-top').fadeOut();}});
-      $('#Back-to-top').click(function() {
-          $('body,html')
-          .animate({scrollTop:0},300)
-          .animate({scrollTop:40},200)
-          .animate({scrollTop:0},130)
-          .animate({scrollTop:15},100)
-          .animate({scrollTop:0},70);
-          });
-  });
+	<!-- Scripts -->
+	<script type='text/javascript'>
+	$(function() { $(window).scroll(function() {
+	    if($(this).scrollTop()>400) { $('#Back-to-top').fadeIn(); }else { $('#Back-to-top').fadeOut();}});
+	    $('#Back-to-top').click(function() {
+	        $('body,html')
+	        .animate({scrollTop:0},300)
+	        .animate({scrollTop:40},200)
+	        .animate({scrollTop:0},130)
+	        .animate({scrollTop:15},100)
+	        .animate({scrollTop:0},70);
+	        });
+	});
 
-  function jam(){
-    var waktu = new Date();
-    var jam = waktu.getHours();
-    var menit = waktu.getMinutes();
-    var detik = waktu.getSeconds();
-     
-    if (jam < 10){ jam = "0" + jam; }
-    if (menit < 10){ menit = "0" + menit; }
-    if (detik < 10){ detik = "0" + detik; }
-    var jam_div = document.getElementById('jam');
-    jam_div.innerHTML = jam + ":" + menit + ":" + detik;
-    setTimeout("jam()", 1000);
-  } jam();
+	function jam(){
+		var waktu = new Date();
+		var jam = waktu.getHours();
+		var menit = waktu.getMinutes();
+		var detik = waktu.getSeconds();
+		 
+		if (jam < 10){ jam = "0" + jam; }
+		if (menit < 10){ menit = "0" + menit; }
+		if (detik < 10){ detik = "0" + detik; }
+		var jam_div = document.getElementById('jam');
+		jam_div.innerHTML = jam + ":" + menit + ":" + detik;
+		setTimeout("jam()", 1000);
+	} jam();
 
-  </script>
+	</script>
 
 <script type="text/javascript">
   (function (jQuery) {

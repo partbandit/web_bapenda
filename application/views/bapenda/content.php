@@ -312,8 +312,6 @@
 
 
 
-
-
 <!-- Large modal / Modal besar-->
 <div class="modal fade modalBesar " tabindex="-1" role="dialog" aria-hidden="true" id="modalBesar">
   <div class="modal-dialog modal-xl ">
